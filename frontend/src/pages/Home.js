@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import PlantDetails from '../components/PlantDetails'
+import PlantForm from '../components/PlantForm'
+import CalendarComponent from '../components/Calendar'
 const Home = () => {
     const [plants, setPlants] = useState(null)
-
+   
     useEffect(() => {
         const fetchPlants = async () => {
             // ONLY FOR DEVELOPMENT!
@@ -21,6 +23,8 @@ const Home = () => {
                     <PlantDetails key={plants._id} plant={plant} />
                 ))}
             </div>
+            <PlantForm />
+            <CalendarComponent />
         </div>
     )
 }
