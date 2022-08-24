@@ -1,5 +1,5 @@
 import { usePlantsContext } from "../hooks/usePlantsContext"
-
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const PlantDetails = ({ plant }) => {
     const { dispatch } = usePlantsContext()
     const handleClick = async () => {
@@ -15,6 +15,8 @@ const PlantDetails = ({ plant }) => {
     return (
         <div className="plant-details">
             <h4>{plant.plantName}</h4>
+            <p>{plant.quickInfo}</p>
+            <p>{formatDistanceToNow(new Date(plant.createdAt), { addSuffix: true } )}</p>
             <span onClick={handleClick}>delete</span>
         </div>
     )

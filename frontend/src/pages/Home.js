@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import PlantDetails from "../components/PlantDetails";
 import PlantForm from "../components/PlantForm";
-import CalendarComponent from "../components/Calendar";
+import CalendarComponent from "../components/CalendarComponent";
 import { usePlantsContext } from "../hooks/usePlantsContext";
 const Home = () => {
   const { plants, dispatch } = usePlantsContext();
@@ -25,7 +25,6 @@ const Home = () => {
           plants.map((plant) => <PlantDetails key={plant._id} plant={plant} />)}
       </div>
       <PlantForm />
-      <CalendarComponent />
     </div>
   );
 };

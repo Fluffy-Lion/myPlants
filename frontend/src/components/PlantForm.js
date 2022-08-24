@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import '../App.css'
 import { usePlantsContext } from '../hooks/usePlantsContext'
+import CalendarComponent from './CalendarComponent'
 const PlantForm = () => {
     const { dispatch } = usePlantsContext()
     const [plantName, setPlantName] = useState('')
@@ -101,13 +102,8 @@ const PlantForm = () => {
                 value={feed}
                 
             />
-            <label>Next Watered:</label>
-            <textarea 
-                type='text'
-                onChange={(e) => setNextWater(e.target.value)}
-                value={nextWater}
-              
-            />
+            <label>Next Water date: {nextWater}</label>
+            <CalendarComponent nextWater={nextWater} setNextWater={setNextWater}/>
             <button>submit</button>
             {error && <h2>{error}</h2>}
         </form>

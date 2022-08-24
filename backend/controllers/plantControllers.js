@@ -30,7 +30,7 @@ const addPlant = async (req, res) => {
     water,
     repot,
     feed,
-    lastWatered,
+    nextWater,
     lastFeed,
     lastRepot,
   } = req.body;
@@ -63,7 +63,7 @@ const addPlant = async (req, res) => {
       water,
       repot,
       feed,
-      lastWatered,
+      nextWater,
       lastFeed,
       lastRepot,
     });
