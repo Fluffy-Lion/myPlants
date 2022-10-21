@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import AddPlant from './pages/AddPlant'
 import Navbar from './components/Navbar'
 const App = () => {
   return (
@@ -10,6 +11,10 @@ const App = () => {
           <Route
           path='/'
           element={<Home />}
+          />
+          <Route
+          path='/add-plant'
+          element={<AddPlant />}
           />
         </Routes>
       </BrowserRouter>

@@ -21,6 +21,8 @@ const getPlant = async (req, res) => {
 
 const addPlant = async (req, res) => {
 
+  let emptyFields = []
+
   const {
     plantName,
     quickInfo,
@@ -28,10 +30,30 @@ const addPlant = async (req, res) => {
     water,
     repot,
     feed,
-    lastWatered,
+    nextWater,
     lastFeed,
     lastRepot,
   } = req.body;
+
+  if(!plantName) {
+    emptyFields.push('plantName')
+  }
+  if(!quickInfo) {
+    emptyFields.push('quickInfo')
+  }
+  if(!light) {
+    emptyFields.push('light')
+  }
+  if(!water) {
+    emptyFields.push('water')
+  }
+  if(!repot) {
+    emptyFields.push('repot')
+  }
+  if(emptyFields.length > 0){
+    return res.status(400).json({ error: 'Please fill highlighted fields', emptyFields})
+  }
+
 
   try {
     const plant = await Plant.create({
@@ -41,7 +63,7 @@ const addPlant = async (req, res) => {
       water,
       repot,
       feed,
-      lastWatered,
+      nextWater,
       lastFeed,
       lastRepot,
     });

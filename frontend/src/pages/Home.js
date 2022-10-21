@@ -1,27 +1,31 @@
-import { useEffect, useState } from 'react'
-import PlantDetails from '../components/PlantDetails'
+import { useEffect } from "react";
+import PlantDetails from "../components/PlantDetails";
+import PlantForm from "../components/PlantForm";
+import CalendarComponent from "../components/CalendarComponent";
+import { usePlantsContext } from "../hooks/usePlantsContext";
 const Home = () => {
-    const [plants, setPlants] = useState(null)
+  const { plants, dispatch } = usePlantsContext();
 
-    useEffect(() => {
-        const fetchPlants = async () => {
-            // ONLY FOR DEVELOPMENT!
-           const response = await fetch('/api/plants') 
-           const json = await response.json()
-           if(response.ok) {
-            setPlants(json)
-           }
-        }
-        fetchPlants()
-    }, [])
-    return (
-        <div className='home'>
-            <div className='plants'>
-                {plants && plants.map((plant) => (
-                    <PlantDetails key={plants._id} plant={plant} />
-                ))}
-            </div>
-        </div>
-    )
-}
-export default Home
+  useEffect(() => {
+    const fetchPlants = async () => {
+      console.log("called");
+      // ONLY FOR DEVELOPMENT!
+      const response = await fetch("/api/plants");
+      const json = await response.json();
+      if (response.ok) {
+        dispatch({ type: "SET_PLANTS", payload: json });
+      }
+    };
+    fetchPlants();
+  }, [dispatch]);
+  return (
+    <div className="home">
+      <div className="plants">
+        {plants &&
+          plants.map((plant) => <PlantDetails key={plant._id} plant={plant} />)}
+      </div>
+      <PlantForm />
+    </div>
+  );
+};
+export default Home;
