@@ -27,7 +27,7 @@ const plantSchema = new Schema({
         type: String,
         required: false
     },
-    lastWatered: {
+    nextWaterDate: {
         type: String,
         required: false
     },

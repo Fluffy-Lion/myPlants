@@ -10,7 +10,7 @@ const PlantForm = () => {
     const [water, setWater] = useState('')
     const [repot, setRepot] = useState('')
     const [feed, setFeed] = useState('')
-    const [nextWater, setNextWater] = useState('')
+    const [nextWaterDate, setNextWaterDate] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
@@ -24,7 +24,7 @@ const PlantForm = () => {
             water,
             repot,
             feed,
-            nextWater
+            nextWaterDate
         }
 
         const response = await fetch('/api/plants', {
@@ -49,7 +49,7 @@ const PlantForm = () => {
         setWater('')
         setRepot('')
         setFeed('')
-        setNextWater('')
+        setNextWaterDate('')
         console.log('new plant added', json)
         dispatch({ 
             type:'CREATE_PLANT',
@@ -102,8 +102,8 @@ const PlantForm = () => {
                 value={feed}
                 
             />
-            <label>Next Water date: {nextWater}</label>
-            <CalendarComponent nextWater={nextWater} setNextWater={setNextWater}/>
+            <label>Next Water date: {nextWaterDate}</label>
+            <CalendarComponent nextWaterDate={nextWaterDate} setNextWaterDate={setNextWaterDate}/>
             <button>submit</button>
             {error && <h2>{error}</h2>}
         </form>

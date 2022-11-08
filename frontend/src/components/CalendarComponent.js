@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 // must change to update current plants NEW water date
 // as setNextWater isnt being passed to the component from plant Details
-const CalendarComponent = ({ setNextWater, nextWater }) => {
+const CalendarComponent = ({ setNextWaterDate, nextWaterDate, updatePlant }) => {
   const [date, setDate] = useState(new Date());
   const [error, setError] = useState(null);
   const dateChecker = (value) => {
@@ -22,8 +22,8 @@ const CalendarComponent = ({ setNextWater, nextWater }) => {
     }
   };
   useEffect(() => {
-    if(setNextWater){
-      setNextWater(date.toDateString());
+    if(setNextWaterDate){
+      setNextWaterDate(date.toDateString());
     }
   }, [date]);
   return (
@@ -36,6 +36,7 @@ const CalendarComponent = ({ setNextWater, nextWater }) => {
         <span className={error ? "error bold" : "bold"}>Selected Date:</span>{" "}
         {date.toDateString()}
       </p>
+      <button onClick={updatePlant}>confirm date</button>
     </>
   );
 };

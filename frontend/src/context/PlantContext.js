@@ -16,6 +16,10 @@ export const plantsReducer = (state, action) => {
             return {
                 plants: state.plants.filter((p) => p._id !== action.payload._id)
             }
+        case 'UPDATE_PLANT':
+            return {
+                plants: state.plants.map((p) => p._id === action.payload._id ? action.payload : p )
+            }
         default:
             return state
     }

@@ -30,7 +30,7 @@ const addPlant = async (req, res) => {
     water,
     repot,
     feed,
-    nextWater,
+    nextWaterDate,
     lastFeed,
     lastRepot,
   } = req.body;
@@ -63,7 +63,7 @@ const addPlant = async (req, res) => {
       water,
       repot,
       feed,
-      nextWater,
+      nextWaterDate,
       lastFeed,
       lastRepot,
     });
@@ -101,7 +101,8 @@ const updatePlant = async (req, res) => {
     if (!plant) {
         return res.status(400).json({ error: "No plant" })
     }
-    res.status(200).json(plant)
+    res.status(200)
+    .json(plant)
 }
 
 module.exports = {

@@ -1,7 +1,9 @@
+import PlantForm from "../components/PlantForm"
+
 const AddPlant = () => {
     return (
         <div>
-            <h1>add a plant</h1>
+            <PlantForm />
         </div>
     )
 }
